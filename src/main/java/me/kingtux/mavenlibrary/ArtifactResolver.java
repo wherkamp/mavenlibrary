@@ -1,17 +1,19 @@
 package me.kingtux.mavenlibrary;
 
+import me.kingtux.mavenlibrary.metadata.ArtifactMetadata;
 import me.kingtux.mavenlibrary.releases.ArtifactRelease;
 import me.kingtux.mavenlibrary.releases.impl.ArtifactReleaseImpl;
-import me.kingtux.mavenlibrary.releases.impl.FileArtifactRelease;
-import me.kingtux.mavenlibrary.releases.impl.FileSnapshotRelease;
 import me.kingtux.mavenlibrary.releases.impl.SnapshotReleaseImpl;
+import org.dom4j.Document;
+import org.dom4j.DocumentException;
 
-import java.io.File;
-import java.util.Collections;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * The core class to this library handling artifact resolving.
+ *
  * @since 1.0
  */
 public class ArtifactResolver {
@@ -32,7 +34,43 @@ public class ArtifactResolver {
      * @return all found artifact versions
      */
     public List<ArtifactRelease> resolveReleases(Artifact artifact) {
-        return Collections.emptyList();
+        List<ArtifactRelease> releases = new ArrayList<>();
+        for (Repository repository : repositories) {
+            releases.addAll(resolveReleases(artifact, repository));
+        }
+        return releases;
+    }
+
+    /**
+     * Resolves all versions for a specific artifact
+     *
+     * @param artifact   the artifact to resolve
+     * @param repository the specified repository
+     * @return all found artifact versions
+     */
+    public List<ArtifactRelease> resolveReleases(Artifact artifact, Repository repository) {
+        List<ArtifactRelease> releases = new ArrayList<>();
+        String s = repository.formatURL(artifact);
+        if (repository instanceof LocalRepository) {
+            //TODO implement local repository
+        } else {
+            s += "/maven-metadata.xml";
+            if (!WebHelper.doesFileExist(s)){
+                return releases;
+            }
+            try {
+                Document document = WebHelper.toDocument(s);
+                ArtifactMetadata metadata = new ArtifactMetadata(document, artifact);
+                for (String version : metadata.getVersions()) {
+                    releases.add(resolveRelease(artifact, version, repository));
+                }
+            } catch (IOException | DocumentException e) {
+                e.printStackTrace();
+            }
+        }
+
+
+        return releases;
     }
 
     public ArtifactRelease resolveRelease(Artifact artifact, String version) {
@@ -45,21 +83,19 @@ public class ArtifactResolver {
 
     public ArtifactRelease resolveRelease(Artifact artifact, String version, Repository repository) {
         if (repository instanceof LocalRepository) {
-            String s = repository.formatURL(artifact, version);
-            File file = new File(s);
-            File metadata = new File(file, "maven-metadata.xml");
-            if (!metadata.exists()) return null;
-            if (version.endsWith("-SNAPSHOT")) {
-                return new FileSnapshotRelease(artifact, version, repository);
-            } else {
-                return new FileArtifactRelease(artifact, version, repository);
-            }
+//TODO implement local
+            return null;
         } else {
-            String s = repository.formatURL(artifact, version) + "/maven-metadata.xml";
-            if (!WebHelper.doesFileExist(s)) return null;
+            String s = repository.formatURL(artifact, version);
             if (version.endsWith("-SNAPSHOT")) {
+                if (!WebHelper.doesFileExist(s+="/maven-metadata.xml")) {
+                    return null;
+                }
                 return new SnapshotReleaseImpl(artifact, version, repository);
             } else {
+                if (!WebHelper.doesFileExist(s)) {
+                    return null;
+                }
                 return new ArtifactReleaseImpl(artifact, version, repository);
             }
         }

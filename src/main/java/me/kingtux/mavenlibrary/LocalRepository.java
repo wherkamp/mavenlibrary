@@ -4,7 +4,9 @@ import java.io.File;
 
 /**
  * For local file repositories
+ *
  * @since 1.0
+ * @deprecated until implemented
  */
 public class LocalRepository extends Repository {
     public LocalRepository() {

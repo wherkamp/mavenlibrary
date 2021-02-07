@@ -19,17 +19,23 @@ repositories {
     mavenCentral()
     jcenter()
 }
-
+tasks.withType<Test> {
+    useJUnitPlatform()
+}
 dependencies {
     implementation("com.squareup.okhttp3:okhttp:4.9.1")
     implementation("org.dom4j:dom4j:2.1.3")
+    testImplementation("org.junit.jupiter:junit-jupiter:5.7.1")
+    testImplementation("org.junit.jupiter:junit-jupiter-engine:5.7.1")
+    testImplementation("org.junit.platform:junit-platform-surefire-provider:1.3.2")
+
 }
 publishing {
     publications {
         create<MavenPublication>("mavenJava") {
 
             artifactId = artifactName
-            from(components["java"])
+            artifact(tasks["shadowJar"])
             versionMapping {
                 usage("java-api") {
                     fromResolutionOf("runtimeClasspath")

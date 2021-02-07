@@ -30,7 +30,7 @@ public class SnapshotMetadata {
         if (snapshot != null) {
             Element timestamp = snapshot.element("timestamp");
             if (timestamp != null) this.timestamp = timestamp.getStringValue();
-            Element buildnumber = snapshot.element("buildnumber");
+            Element buildnumber = snapshot.element("buildNumber");
             if (buildnumber != null) this.buildNumber = buildnumber.getStringValue();
         }
         Element lastUpdated = versioning.element("lastUpdated");

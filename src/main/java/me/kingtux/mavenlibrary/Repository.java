@@ -2,6 +2,7 @@ package me.kingtux.mavenlibrary;
 
 /**
  * A Object representing a repository
+ *
  * @since 1.0
  */
 public class Repository {
@@ -10,6 +11,7 @@ public class Repository {
 
     public Repository(String url, String repoID) {
         this.url = url;
+        if (!this.url.endsWith("/")) this.url += "/";
         this.repoID = repoID;
     }
 
@@ -50,5 +52,8 @@ public class Repository {
         builder.append("/");
         builder.append(version);
         return builder.toString();
+    }
+    public static class Repositories{
+        public static final Repository MAVEN_CENTRAL = new Repository("https://repo1.maven.org/maven2/","central");
     }
 }

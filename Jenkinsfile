@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage ('Build') {
             steps {
-              sh 'gradle clean shadowJar javadoc'
+              sh 'gradle clean test javadoc'
             }
             post {
                 success {

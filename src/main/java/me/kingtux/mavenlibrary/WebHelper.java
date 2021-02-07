@@ -3,6 +3,9 @@ package me.kingtux.mavenlibrary;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import org.dom4j.Document;
+import org.dom4j.DocumentException;
+import org.dom4j.io.SAXReader;
 
 import java.io.*;
 
@@ -31,6 +34,9 @@ public class WebHelper {
                 .url(downloadLocation)
                 .build();
         Response execute = client.newCall(request).execute();
+        if (execute.code() != 200) {
+            throw new IOException("Unable to find file. "+downloadLocation);
+        }
         if (!finalFile.exists()) {
 
             BufferedInputStream input = new BufferedInputStream(execute.body().byteStream());
@@ -48,6 +54,22 @@ public class WebHelper {
             output.flush();
             output.close();
             input.close();
+        }
+    }
+
+    public static Document toDocument(String url) throws IOException, DocumentException {
+        Request request = new Request.Builder()
+                .url(url)
+                .build();
+        try (Response execute = client.newCall(request).execute()) {
+            if (execute.code() == 404) return null;
+            SAXReader reader = new SAXReader();
+            Document doc = reader.read(execute.body().byteStream());
+            return doc;
+        } catch (IOException e) {
+            throw e;
+        } catch (DocumentException e) {
+            throw e;
         }
     }
 }
