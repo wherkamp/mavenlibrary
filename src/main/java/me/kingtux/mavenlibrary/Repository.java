@@ -16,4 +16,12 @@ public class Repository {
     public String getRepoID() {
         return repoID;
     }
+
+    public String formatURL(Artifact artifact) {
+        StringBuilder builder = new StringBuilder(url);
+        builder.append(artifact.getGroupID().replace(".", "/"));
+        builder.append("/");
+        builder.append(artifact.getArtifactID());
+        return builder.toString();
+    }
 }

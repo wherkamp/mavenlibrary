@@ -15,11 +15,18 @@ public class Artifact {
     }
 
     public List<ArtifactRelease> resolveReleases(ArtifactResolver artifactResolver) {
-        return Collections.emptyList();
+        return artifactResolver.resolveReleases(this);
     }
 
     public ArtifactRelease resolveRelease(ArtifactResolver artifactResolver, String version) {
-        return null;
+        return artifactResolver.resolveRelease(this, version);
     }
 
+    public String getGroupID() {
+        return groupID;
+    }
+
+    public String getArtifactID() {
+        return artifactID;
+    }
 }
