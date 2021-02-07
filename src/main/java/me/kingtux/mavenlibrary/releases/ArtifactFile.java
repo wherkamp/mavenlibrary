@@ -2,6 +2,9 @@ package me.kingtux.mavenlibrary.releases;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.instrument.Instrumentation;
+import java.net.URLClassLoader;
+import java.util.jar.JarFile;
 
 public class ArtifactFile {
     private String downloadLocation;
@@ -21,6 +24,20 @@ public class ArtifactFile {
     public File getFile() throws IOException {
         //TODO implement download
         return null;
+    }
+
+    /**
+     * Appends the Jar file to the class path using  instrumentation
+     *
+     * @param instrumentation the instance of the instrumentation
+     * @throws Exception If file fails to be found or fails to add jar
+     */
+    public void addToClassPath(Instrumentation instrumentation) throws Exception {
+        instrumentation.appendToSystemClassLoaderSearch(new JarFile(getFile()));
+    }
+
+    public void addToClassPath(URLClassLoader classLoader) {
+
     }
 
 }
