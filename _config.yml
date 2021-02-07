@@ -1,0 +1,6 @@
+remote_theme: pmarsceill/just-the-docs
+title: MavenLibrary
+description: MavenLibrary docs
+url: "https://kingtux.dev"
+baseurl: "/mavenhelper/"
+

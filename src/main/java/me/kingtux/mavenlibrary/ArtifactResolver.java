@@ -10,6 +10,10 @@ import java.io.File;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * The core class to this library handling artifact resolving.
+ * @since 1.0
+ */
 public class ArtifactResolver {
     private List<Repository> repositories;
 
@@ -21,6 +25,12 @@ public class ArtifactResolver {
         return repositories;
     }
 
+    /**
+     * Resolves all versions for a specific artifact
+     *
+     * @param artifact the artifact to resolve
+     * @return all found artifact versions
+     */
     public List<ArtifactRelease> resolveReleases(Artifact artifact) {
         return Collections.emptyList();
     }

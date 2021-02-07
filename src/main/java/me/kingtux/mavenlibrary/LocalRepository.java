@@ -2,6 +2,10 @@ package me.kingtux.mavenlibrary;
 
 import java.io.File;
 
+/**
+ * For local file repositories
+ * @since 1.0
+ */
 public class LocalRepository extends Repository {
     public LocalRepository() {
         super(System.getProperty("user.dir") + ".m2" + File.separator + "repository", "local");

@@ -1,5 +1,9 @@
 package me.kingtux.mavenlibrary;
 
+/**
+ * A Object representing a repository
+ * @since 1.0
+ */
 public class Repository {
     private String url;
     private String repoID;
@@ -17,6 +21,12 @@ public class Repository {
         return repoID;
     }
 
+    /**
+     * Format the URL with a the artifact details
+     *
+     * @param artifact the artifact
+     * @return the formatted URL
+     */
     public String formatURL(Artifact artifact) {
         StringBuilder builder = new StringBuilder(url);
         builder.append(artifact.getGroupID().replace(".", "/"));
@@ -25,6 +35,13 @@ public class Repository {
         return builder.toString();
     }
 
+    /**
+     * Format the URL with a the artifact details
+     *
+     * @param artifact the artifact
+     * @param version  the specified version
+     * @return the formatted URL
+     */
     public String formatURL(Artifact artifact, String version) {
         StringBuilder builder = new StringBuilder(url);
         builder.append(artifact.getGroupID().replace(".", "/"));

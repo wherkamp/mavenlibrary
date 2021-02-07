@@ -6,6 +6,10 @@ import okhttp3.Response;
 
 import java.io.IOException;
 
+/**
+ * Internal use class.
+ *
+ */
 public class WebHelper {
     private static final OkHttpClient client = new OkHttpClient();
 
