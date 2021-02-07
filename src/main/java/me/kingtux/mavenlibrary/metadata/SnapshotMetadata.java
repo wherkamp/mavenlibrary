@@ -7,7 +7,9 @@ import org.dom4j.Element;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-
+/**
+ * @since 1.0
+ */
 public class SnapshotMetadata {
     private String version;
     private List<SnapshotVersion> versions;

@@ -2,15 +2,14 @@ package me.kingtux.mavenlibrary.metadata;
 
 import me.kingtux.mavenlibrary.Artifact;
 
-import java.lang.annotation.Documented;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.dom4j.Document;
-import org.dom4j.DocumentException;
 import org.dom4j.Element;
-import org.dom4j.io.SAXReader;
-
+/**
+ * @since 1.0
+ */
 public class ArtifactMetadata {
     private Artifact artifact;
     private List<String> versions;

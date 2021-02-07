@@ -6,6 +6,9 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 
+/**
+ * @since 1.0
+ */
 public class LocalArtifactFile extends ArtifactFile {
     public LocalArtifactFile(String downloadLocation, ArtifactRelease release) {
         super(downloadLocation, release);

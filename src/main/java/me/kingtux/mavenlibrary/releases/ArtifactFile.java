@@ -8,7 +8,9 @@ import java.io.IOException;
 import java.lang.instrument.Instrumentation;
 import java.net.URLClassLoader;
 import java.util.jar.JarFile;
-
+/**
+ * @since 1.0
+ */
 public class ArtifactFile {
     private String downloadLocation;
     private ArtifactRelease release;

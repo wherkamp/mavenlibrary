@@ -4,7 +4,9 @@ import me.kingtux.mavenlibrary.Artifact;
 import me.kingtux.mavenlibrary.Repository;
 import me.kingtux.mavenlibrary.releases.ArtifactFile;
 import me.kingtux.mavenlibrary.releases.ArtifactRelease;
-
+/**
+ * @since 1.0
+ */
 public class FileArtifactRelease implements ArtifactRelease {
     public FileArtifactRelease(Artifact artifact, String version, Repository repository) {
 

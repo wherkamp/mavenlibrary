@@ -6,7 +6,9 @@ import me.kingtux.mavenlibrary.releases.ArtifactFile;
 import me.kingtux.mavenlibrary.releases.SnapshotRelease;
 
 import java.util.Set;
-
+/**
+ * @since 1.0
+ */
 public class FileSnapshotRelease implements SnapshotRelease {
     public FileSnapshotRelease(Artifact artifact, String version, Repository repository) {
 

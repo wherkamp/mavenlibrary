@@ -1,7 +1,9 @@
 package me.kingtux.mavenlibrary.releases;
 
 import java.util.Set;
-
+/**
+ * @since 1.0
+ */
 public interface SnapshotRelease extends ArtifactRelease {
     /**
      * Will pull the latest version of the snapshot
