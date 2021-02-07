@@ -6,6 +6,10 @@ import me.kingtux.mavenlibrary.releases.ArtifactFile;
 import me.kingtux.mavenlibrary.releases.ArtifactRelease;
 
 public class ArtifactReleaseImpl implements ArtifactRelease {
+    public ArtifactReleaseImpl(Artifact artifact, String version, Repository repository) {
+
+    }
+
     @Override
     public String getVersion() {
         return null;

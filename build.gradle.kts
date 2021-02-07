@@ -12,13 +12,10 @@ java {
 }
 repositories {
     mavenCentral()
-    maven("https://repo.ryandw11.com/repository/maven-releases")
-    maven("https://repo.potatocorp.dev/storages/maven/tuxjsql")
     jcenter()
 }
 
 dependencies {
-    implementation(group = "me.kingtux", name = "tuxorm", version = "1.5-SNAPSHOT")
-    implementation(group = "me.kingtux", name = "tuxjsql", version = "2.2.0-SNAPSHOT")
-    implementation(group = "io.javalin", name = "javalin", version = "3.13.0")
+    implementation("com.squareup.okhttp3:okhttp:4.9.1")
+    implementation("org.dom4j:dom4j:2.1.3")
 }

@@ -26,6 +26,10 @@ public class ArtifactFile {
         return null;
     }
 
+    public void download(File file) {
+        //TODO implement download
+    }
+
     /**
      * Appends the Jar file to the class path using  instrumentation
      *

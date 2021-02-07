@@ -9,6 +9,22 @@ public class LocalRepository extends Repository {
 
     @Override
     public String formatURL(Artifact artifact) {
-        return "";
+        StringBuilder builder = new StringBuilder(getUrl());
+        builder.append(artifact.getGroupID().replace(".", File.separator));
+        builder.append(File.separator);
+        builder.append(artifact.getArtifactID());
+        return builder.toString();
+
+    }
+
+    @Override
+    public String formatURL(Artifact artifact, String version) {
+        StringBuilder builder = new StringBuilder(getUrl());
+        builder.append(artifact.getGroupID().replace(".", File.separator));
+        builder.append(File.separator);
+        builder.append(artifact.getArtifactID());
+        builder.append(File.separator);
+        builder.append(version);
+        return builder.toString();
     }
 }

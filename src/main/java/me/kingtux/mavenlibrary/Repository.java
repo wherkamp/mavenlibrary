@@ -24,4 +24,14 @@ public class Repository {
         builder.append(artifact.getArtifactID());
         return builder.toString();
     }
+
+    public String formatURL(Artifact artifact, String version) {
+        StringBuilder builder = new StringBuilder(url);
+        builder.append(artifact.getGroupID().replace(".", "/"));
+        builder.append("/");
+        builder.append(artifact.getArtifactID());
+        builder.append("/");
+        builder.append(version);
+        return builder.toString();
+    }
 }

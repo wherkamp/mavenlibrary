@@ -4,12 +4,9 @@ import me.kingtux.mavenlibrary.Artifact;
 import me.kingtux.mavenlibrary.Repository;
 import me.kingtux.mavenlibrary.releases.ArtifactFile;
 import me.kingtux.mavenlibrary.releases.ArtifactRelease;
-import me.kingtux.mavenlibrary.releases.SnapshotRelease;
 
-import java.util.Set;
-
-public class SnapshotReleaseImpl implements SnapshotRelease {
-    public SnapshotReleaseImpl(Artifact artifact, String version, Repository repository) {
+public class FileArtifactRelease implements ArtifactRelease {
+    public FileArtifactRelease(Artifact artifact, String version, Repository repository) {
 
     }
 
@@ -20,16 +17,6 @@ public class SnapshotReleaseImpl implements SnapshotRelease {
 
     @Override
     public ArtifactFile getArtifactFile(String classifier) {
-        return null;
-    }
-
-    @Override
-    public ArtifactFile getArtifactFile(String classifier, String timestamp) {
-        return null;
-    }
-
-    @Override
-    public Set<String> getTimestamps() {
         return null;
     }
 
