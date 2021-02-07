@@ -34,7 +34,7 @@ public class SnapshotMetadata {
         Element lastUpdated = versioning.element("lastUpdated");
         if (lastUpdated != null) this.lastUpdated = lastUpdated.getStringValue();
         Element snapshotVersions = versioning.element("snapshotVersions");
-        for (Element element : snapshot.elements()) {
+        for (Element element : snapshotVersions.elements()) {
             SnapshotVersion snapshotVersion = new SnapshotVersion(element);
             versions.add(snapshotVersion);
         }
