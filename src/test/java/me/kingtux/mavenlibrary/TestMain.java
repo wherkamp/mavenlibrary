@@ -22,7 +22,7 @@ public class TestMain {
         ArtifactResolver artifactResolver = new ArtifactResolver(List.of(Repository.Repositories.MAVEN_CENTRAL, new Repository("https://repo.potatocorp.dev/storages/maven/kingtux-repo/", "kingtux-repo")));
 
         Artifact artifact = new Artifact("me.kingtux", "tuxorm");
-        List<ArtifactRelease> artifactReleases = artifact.resolveReleases(artifactResolver);
+        List<ArtifactRelease> artifactReleases = artifact.resolveAllReleases(artifactResolver);
         assertTrue(artifactReleases.size() != 0);
         for (ArtifactRelease artifactRelease : artifactReleases) {
             if (artifactRelease.getVersion().equals("1.0")) {
@@ -47,7 +47,7 @@ public class TestMain {
         ArtifactResolver artifactResolver = new ArtifactResolver(List.of(new Repository("https://repo.potatocorp.dev/storages/maven/kingtux-repo/", "kingtux-repo")));
 
         Artifact artifact = new Artifact("me.kingtux", "ResourceWorlds");
-        List<ArtifactRelease> artifactReleases = artifact.resolveReleases(artifactResolver);
+        List<ArtifactRelease> artifactReleases = artifact.resolveAllReleases(artifactResolver);
         assertTrue(artifactReleases.size() != 0);
         for (ArtifactRelease artifactRelease : artifactReleases) {
             if (artifactRelease.getVersion().equals("1.0-SNAPSHOT")) {

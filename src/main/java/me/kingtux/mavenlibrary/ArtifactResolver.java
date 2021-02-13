@@ -33,10 +33,10 @@ public class ArtifactResolver {
      * @param artifact the artifact to resolve
      * @return all found artifact versions
      */
-    public List<ArtifactRelease> resolveReleases(Artifact artifact) {
+    public List<ArtifactRelease> resolveAllReleases(Artifact artifact) {
         List<ArtifactRelease> releases = new ArrayList<>();
         for (Repository repository : repositories) {
-            releases.addAll(resolveReleases(artifact, repository));
+            releases.addAll(resolveAllReleases(artifact, repository));
         }
         return releases;
     }
@@ -48,7 +48,7 @@ public class ArtifactResolver {
      * @param repository the specified repository
      * @return all found artifact versions
      */
-    public List<ArtifactRelease> resolveReleases(Artifact artifact, Repository repository) {
+    public List<ArtifactRelease> resolveAllReleases(Artifact artifact, Repository repository) {
         List<ArtifactRelease> releases = new ArrayList<>();
         String s = repository.formatURL(artifact);
         if (repository instanceof LocalRepository) {
