@@ -74,6 +74,10 @@ public class Artifact {
         return groupID;
     }
 
+    public String getVersion() {
+        return version;
+    }
+
     public String getArtifactID() {
         return artifactID;
     }

@@ -22,6 +22,20 @@ repositories {
 tasks.withType<Test> {
     useJUnitPlatform()
 }
+tasks {
+    named<com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar>("shadowJar") {
+        archiveClassifier.set("")
+    }
+    "jar"{
+        enabled = false
+    }
+
+    "assemble"{
+        dependsOn(shadowJar)
+
+    }
+}
+
 dependencies {
     implementation("com.squareup.okhttp3:okhttp:4.9.1")
     implementation("org.dom4j:dom4j:2.1.3")
